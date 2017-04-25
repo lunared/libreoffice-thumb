@@ -1,0 +1,11 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h2>Converted Documents</h2>
+        <hr>
+        {% for file in files %}
+            <img width="20%" src="{{file.thumbnail}}" />
+        {% endfor %}
+    </body>
+</html>

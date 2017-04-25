@@ -1,0 +1,22 @@
+version: '2'
+services:
+    app:
+        build: example/
+        command: python3 manage.py runserver 0.0.0.0:8000
+        volumes:
+            - ./media/uploads:/code/media/uploads
+            - ./media/thumbs:/code/media/thumbnails
+            - ./example:/code
+        ports:
+            - "80:8000"
+    converter:
+        build: ..
+        volumes:
+            - ./media/uploads:/mnt/in
+            - ./media/thumbs:/mnt/out
+
+volumes:
+    uploads:
+        driver: local
+    thumbs:
+        driver: local

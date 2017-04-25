@@ -1,0 +1,8 @@
+
+example/venv/
+
+*.pyc
+
+*.sqlite3
+
+example/media/
