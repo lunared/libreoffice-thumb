@@ -2,15 +2,15 @@
 
 This is a persistent docker service provided with volume mapping as a way to extend applications that need the ability to convert documents into pngs.  A common scenario for this would be generating thumbnail files of documents for a data store.
 
-The name of this project is a little misleading, as libreoffice is used only for the initial conversion of the documents into a pdf, which is then converted to png using imagemagick.  This is done because I found that the quality of documents directly into png using only libreoffice was of poor quality.
+The name of this project is a little misleading, as libreoffice is used only for the initial conversion of the documents into a pdf, which is then converted to png using imagemagick.  This is done because I found that the quality of documents directly into png using only libreoffice was of poor quality.  This was especially notiable when converting from PDFs as headless mode was having difficulty processing embedded fonts, whereas imagemagick handles it flawlessly.
 
 ## Running 
 
-Simply use docker's volume mapping to mount two volumes to a container.  You'll need an `in`, mapped to `/mnt/in` and an `out`, mapped to '/mnt/out`
+Simply use docker's volume mapping to mount two volumes to a container.  You'll need an `in`, mapped to `/mnt/in` and an `out`, mapped to `/mnt/out`.  
 
-To do this with docker run, you can do 
+To do this with docker run, you can do `docker run -d -P -v ./media:/mnt/in -v ./thumbs:/mnt/out`
 
-`docker run -d -P -v ./media:/mnt/in -v ./thumbs:/mnt/out`
+It's highly recommended that you DO NOT MAP THE SAME DIRECTORY TO IN AND OUT
 
 ## Composing
 
